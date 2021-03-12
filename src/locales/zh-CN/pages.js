@@ -62,4 +62,11 @@ export default {
   'pages.searchTable.tenThousand': '万',
   'pages.searchTable.batchDeletion': '批量删除',
   'pages.searchTable.batchApproval': '批量审批',
+  'pages.employee.searchTable.title': '查询表格',
+  'pages.employee.searchTable.employeeId': '工号',
+  'pages.employee.searchTable.employeeName': '姓名',
+  'pages.employee.searchTable.employeeIdCode': '身份证',
+  'pages.employee.searchTable.employeeAge': '年龄',
+  'pages.employee.searchTable.employeeSex': '性别',
+  'pages.employee.searchTable.handler': '操作',
 };

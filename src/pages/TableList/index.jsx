@@ -1,6 +1,6 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, message, Input, Drawer } from 'antd';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useIntl, FormattedMessage } from 'umi';
 import { PageContainer, FooterToolbar } from '@ant-design/pro-layout';
 import ProTable from '@ant-design/pro-table';
@@ -86,6 +86,12 @@ const TableList = () => {
   const actionRef = useRef();
   const [currentRow, setCurrentRow] = useState();
   const [selectedRowsState, setSelectedRows] = useState([]);
+
+  // useEffect(()=>{
+  //   queryRule({ current: 1, pageSize: 20,sorter:{},filter:{} }).then (r =>{
+  //     console.log(r);
+  //   })
+  // },[])
   /** 国际化配置 */
 
   const intl = useIntl();
@@ -188,6 +194,7 @@ const TableList = () => {
         return defaultRender(item);
       },
     },
+    // 操作列 自定义操作列，可以放置<a/>或<btn>
     {
       title: <FormattedMessage id="pages.searchTable.titleOption" defaultMessage="操作" />,
       dataIndex: 'option',
@@ -220,6 +227,7 @@ const TableList = () => {
         search={{
           labelWidth: 120,
         }}
+        // 放在表格名后面的工具栏
         toolBarRender={() => [
           <Button
             type="primary"

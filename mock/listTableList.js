@@ -99,6 +99,7 @@ function getRule(req, res, u) {
     pageSize,
     current: parseInt(`${params.currentPage}`, 10) || 1,
   };
+  console.log(result);
   return res.json(result);
 }
 

@@ -58,6 +58,7 @@ const Model = {
   },
   reducers: {
     changeLoginStatus(state, { payload }) {
+      // 登录验证通过之后，获取返回的结果，将身份设置为user或者admin
       setAuthority(payload.currentAuthority);
       return { ...state, status: payload.status, type: payload.type };
     },

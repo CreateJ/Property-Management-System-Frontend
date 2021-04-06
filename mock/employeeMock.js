@@ -30,5 +30,5 @@ const getEmployeeData = (req, res) => {
 };
 
 export default {
-  'GET /api/get_employee_data': getEmployeeData,
+  'GET /api2/get_employee_data': getEmployeeData,
 };

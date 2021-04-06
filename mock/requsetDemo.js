@@ -9,5 +9,5 @@ const getEasyData = (req, res) => {
 }
 
 export default {
-  '/api/easyDemoData': getEasyData,
+  '/api2/easyDemoData': getEasyData,
 }

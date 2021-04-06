@@ -1,6 +1,7 @@
 /** Request 网络请求工具 更详细的 api 文档: https://github.com/umijs/umi-request */
 import { extend } from 'umi-request';
 import { notification } from 'antd';
+import Cookies from 'js-cookie'
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
@@ -43,8 +44,51 @@ const errorHandler = (error) => {
 /** 配置request请求时的默认参数 */
 
 const request = extend({
+  prefix: "/api/1.0",
   errorHandler,
   // 默认错误处理
   credentials: 'include', // 默认请求是否带上cookie
 });
+
+
+request.interceptors.request.use(async (url, options) => {
+  let _token = Cookies.get("token");
+
+  if (_token) {
+    console.log(`请求拦截，对\n${url}\n进行处理,有token`);
+    const headers = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': _token
+    };
+    return (
+      {
+        url: url,
+        options: { ...options, headers: headers },
+      }
+    );
+  } else {
+    console.log(`请求拦截，对\n${url}\n进行处理,无token`);
+    return (
+      {
+        url: url,
+        options: { ...options },
+      }
+    );
+  }
+
+})
+
+// response拦截器, 处理response
+request.interceptors.response.use((response, options) => {
+  const _token = response.headers.get('token')
+  if(_token){
+    // console.log(`获取到Token了${_token}`);
+    const millisecond = new Date().getTime();
+    const expiresTime = new Date(millisecond + 60 * 1000 * 60 * 3);
+    Cookies.set("token", _token,{expires: expiresTime});
+  }
+  return response;
+});
+
 export default request;

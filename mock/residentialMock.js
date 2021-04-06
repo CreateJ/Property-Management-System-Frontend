@@ -20,5 +20,5 @@ const getResidentialData = (req, res) => {
 };
 
 export default {
-  'GET /api/get_residential_data': getResidentialData,
+  'GET /api2/get_residential_data': getResidentialData,
 };

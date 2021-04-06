@@ -48,9 +48,9 @@ export default [
                 icon: 'AreaChartOutlined',
                 routes: [
                   {
-                    path: '/data/monthly',
-                    name: 'monthly',
-                    component: './DataPanel/MonthlyDataPanel',
+                    path: '/data/analysis',
+                    name: 'analysis',
+                    component: './DataPanel/Analysis',
                   }
                 ],
               },
@@ -92,17 +92,21 @@ export default [
                 component: './OrderManagement',
               },
               {
-                path: '/personal',
+                path: '/account',
                 name: 'personal',
                 icon: 'ContactsOutlined',
-                component: './PersonalManagement',
-                authority: ['admin', 'user']
-              },
-              {
-                name: 'list.table-list',
-                icon: 'table',
-                path: '/list',
-                component: './TableList',
+                routes: [
+                  {
+                    path: '/',
+                    redirect: '/account/settings',
+                  },
+                  {
+                    name: 'settings',
+                    icon: 'smile',
+                    path: '/account/settings',
+                    component: './account/settings',
+                  },
+                ],
               },
               {
                 component: './404',

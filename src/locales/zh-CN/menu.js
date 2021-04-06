@@ -51,13 +51,14 @@ export default {
   'menu.editor.koni': '拓扑编辑器',
   'menu.demo': '示例',
   'menu.data': '数据面板',
-  'menu.data.monthly': '月度数据',
+  'menu.data.analysis': 'Analysis',
   'menu.basic': '基础管理',
   'menu.basic.households': '住户管理',
   'menu.basic.residential': '住宅管理',
   'menu.senior': '高级管理',
   'menu.senior.employee': '员工管理',
   'menu.personal': '个人管理',
+  'menu.personal.settings': '个人设置',
   'menu.order': '服务工单管理',
 
 };

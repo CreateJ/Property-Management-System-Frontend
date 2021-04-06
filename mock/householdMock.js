@@ -25,5 +25,5 @@ const getHouseholdData = (req, res) => {
   res.json(result);
 }
 export default {
-  'GET /api/get_household_data': getHouseholdData,
+  'GET /api2/get_household_data': getHouseholdData,
 };

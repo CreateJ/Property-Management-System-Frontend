@@ -14,5 +14,5 @@ const getFakerChartData = {
 }
 
 export default {
-  'GET  /api/get_faker_chart_data': getFakerChartData,
+  'GET  /api2/get_faker_chart_data': getFakerChartData,
 }

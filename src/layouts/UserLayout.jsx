@@ -30,7 +30,7 @@ const UserLayout = (props) => {
     <HelmetProvider>
       <Helmet>
         <title>{title}</title>
-        <meta name="description" content={title} />
+        <meta name='description' content={title} />
       </Helmet>
 
       <div className={styles.container}>
@@ -40,17 +40,13 @@ const UserLayout = (props) => {
         <div className={styles.content}>
           <div className={styles.top}>
             <div className={styles.header}>
-              <Link to="/">
-                <img alt="logo" className={styles.logo} src={logo} />
-                <span className={styles.title}>Ant Design</span>
-              </Link>
+              <img alt='logo' className={styles.logo} src={logo} />
+              <div className={styles.title}>智慧物业调度管理系统</div>
+              <div className={styles.desc}>
+                21世纪最智能的物业管理系统<br />作者:王驰捷
+              </div>
             </div>
-            <div className={styles.desc}>
-              <FormattedMessage
-                id="pages.layouts.userLayout.title"
-                defaultMessage="Ant Design 是西湖区最具影响力的 Web 设计规范"
-              />
-            </div>
+
           </div>
           {children}
         </div>

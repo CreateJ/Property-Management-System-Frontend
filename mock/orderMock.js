@@ -29,5 +29,5 @@ const getOrderData = (req, res) => {
 };
 
 export default {
-  'GET /api/get_order_data': getOrderData,
+  'GET /api2/get_order_data': getOrderData,
 };

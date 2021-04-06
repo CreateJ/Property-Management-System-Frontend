@@ -13,7 +13,7 @@ async function getFakeCaptcha(req, res) {
 
 export default {
   // 支持值为 Object 和 Array
-  'GET /api/currentUser': {
+  'GET /api2/currentUser': {
     name: 'Serati Ma',
     avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
     userid: '00000001',
@@ -64,7 +64,7 @@ export default {
     phone: '0752-268888888',
   },
   // GET POST 可省略
-  'GET /api/users': [
+  'GET /api2/users': [
     {
       key: '1',
       name: 'John Brown',
@@ -84,8 +84,9 @@ export default {
       address: 'Sidney No. 1 Lake Park',
     },
   ],
-  'POST /api/login/account': async (req, res) => {
+  'POST /api2/login/account': async (req, res) => {
     const { password, userName, type } = req.body;
+
     await waitTime(2000);
 
     if (password === 'ant.design' && userName === 'admin') {
@@ -121,13 +122,13 @@ export default {
       currentAuthority: 'guest',
     });
   },
-  'POST /api/register': (req, res) => {
+  'POST /api2/register': (req, res) => {
     res.send({
       status: 'ok',
       currentAuthority: 'user',
     });
   },
-  'GET /api/500': (req, res) => {
+  'GET /api2/500': (req, res) => {
     res.status(500).send({
       timestamp: 1513932555104,
       status: 500,
@@ -136,7 +137,7 @@ export default {
       path: '/base/category/list',
     });
   },
-  'GET /api/404': (req, res) => {
+  'GET /api2/404': (req, res) => {
     res.status(404).send({
       timestamp: 1513932643431,
       status: 404,
@@ -145,7 +146,7 @@ export default {
       path: '/base/category/list/2121212',
     });
   },
-  'GET /api/403': (req, res) => {
+  'GET /api2/403': (req, res) => {
     res.status(403).send({
       timestamp: 1513932555104,
       status: 403,
@@ -154,7 +155,7 @@ export default {
       path: '/base/category/list',
     });
   },
-  'GET /api/401': (req, res) => {
+  'GET /api2/401': (req, res) => {
     res.status(401).send({
       timestamp: 1513932555104,
       status: 401,
@@ -163,5 +164,5 @@ export default {
       path: '/base/category/list',
     });
   },
-  'GET  /api/login/captcha': getFakeCaptcha,
+  'GET  /api2/login/captcha': getFakeCaptcha,
 };

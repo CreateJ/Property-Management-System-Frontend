@@ -1,9 +1,10 @@
 import { stringify } from 'querystring';
 import { history } from 'umi';
-import { fakeAccountLogin } from '@/services/login';
+import { fakeAccountLogin, userLogin } from '@/services/login';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 import { message } from 'antd';
+import Cookies from 'js-cookie'
 
 const Model = {
   namespace: 'login',
@@ -12,7 +13,15 @@ const Model = {
   },
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      // const response = yield call(fakeAccountLogin, payload);
+      console.log(payload,'login model');
+      const response = yield call(userLogin, payload)
+      console.log(response,'login response');
+      if(response.code === 200){
+        response.status = 'ok';
+        response.currentAuthority = 'admin';
+        response.type='account';
+      }
       yield put({
         type: 'changeLoginStatus',
         payload: response,
@@ -38,6 +47,7 @@ const Model = {
             return;
           }
         }
+        console.log(redirect);
 
         history.replace(redirect || '/');
       }
@@ -54,6 +64,8 @@ const Model = {
           }),
         });
       }
+
+      Cookies.remove('token');
     },
   },
   reducers: {

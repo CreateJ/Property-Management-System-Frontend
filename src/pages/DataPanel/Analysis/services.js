@@ -1,5 +1,17 @@
-import request2 from '@/utils/requestMock';
+import request from '@/utils/request';
 
-export async function getData(){
-  return request2('/api2/get_faker_chart_data');
-}
+export const getAcData = async () => {
+  return request('/management/order/state');
+};
+
+export const getEmployeeState = async () => {
+  return request('/management/employee/state');
+};
+
+export const getMouthTypeData = async () => {
+  return request('/management/skills/state');
+};
+
+export const getMonthOrderData = async () => {
+  return request('/management/month/order/state');
+};

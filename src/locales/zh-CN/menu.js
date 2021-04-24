@@ -51,7 +51,9 @@ export default {
   'menu.editor.koni': '拓扑编辑器',
   'menu.demo': '示例',
   'menu.data': '数据面板',
-  'menu.data.analysis': 'Analysis',
+  'menu.data.analysis': '数据分析',
+  'menu.data.feedback': '用户反馈',
+  'menu.data.analysis_mock': '预期效果',
   'menu.basic': '基础管理',
   'menu.basic.households': '住户管理',
   'menu.basic.residential': '住宅管理',
@@ -60,5 +62,4 @@ export default {
   'menu.personal': '个人管理',
   'menu.personal.settings': '个人设置',
   'menu.order': '服务工单管理',
-
 };

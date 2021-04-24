@@ -22,7 +22,7 @@ class Settings extends Component {
           id="accountandsettings.menuMap.security"
           defaultMessage="Security Settings"
         />
-      )
+      ),
     };
     this.state = {
       mode: 'inline',
@@ -32,10 +32,6 @@ class Settings extends Component {
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch({
-      type: 'accountAndsettings/fetchCurrent',
-    });
     window.addEventListener('resize', this.resize);
     this.resize();
   }
@@ -105,12 +101,6 @@ class Settings extends Component {
   };
 
   render() {
-    const { currentUser } = this.props;
-
-    if (!currentUser.userid) {
-      return '';
-    }
-
     const { mode, selectKey } = this.state;
     return (
       <GridContent>
@@ -137,6 +127,4 @@ class Settings extends Component {
   }
 }
 
-export default connect(({ accountAndsettings }) => ({
-  currentUser: accountAndsettings.currentUser,
-}))(Settings);
+export default connect()(Settings);

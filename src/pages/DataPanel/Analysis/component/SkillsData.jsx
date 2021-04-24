@@ -1,11 +1,8 @@
-import { Col, Row, Tooltip } from 'antd';
+import { Col, Row } from 'antd';
 import React from 'react';
 import { StatisticCard } from '@ant-design/pro-card';
 import { connect } from 'umi';
 import { Column } from '@ant-design/charts';
-
-
-const { Statistic } = StatisticCard;
 
 const topColResponsiveProps = {
   xs: 24,
@@ -33,21 +30,15 @@ const SkillsData = ({ skillsOrderNum }) => {
         { type: 'adjust-color' },
       ],
     },
-  }
+  };
 
   return (
-    <Row gutter={24} type='flex'>
+    <Row gutter={24} type="flex">
       <Col {...topColResponsiveProps}>
-        <StatisticCard
-          title="工单类型与数量、完成不及时对比图"
-          // style={{ width: '500px' }}
-          chart={
-            <Column {...config}></Column>
-          }
-        />
+        <StatisticCard title="过去30天各类型工单数据图" chart={<Column {...config}></Column>} />
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default connect()(SkillsData)
+export default connect()(SkillsData);

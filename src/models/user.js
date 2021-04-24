@@ -20,14 +20,13 @@ const UserModel = {
     *fetchCurrent(_, { call, put }) {
       const response = yield call(getUserData);
       console.log(response);
-      if(response.data && response.data.user) {
+      if (response.data && response.data.user) {
         const userData = response.data.user;
         yield put({
           type: 'saveCurrentUser',
           payload: userData,
         });
       }
-
     },
   },
   reducers: {

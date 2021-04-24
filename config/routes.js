@@ -1,12 +1,12 @@
 /*
-* 属性介绍
-* path: 路由
-* component: 组件所在的文件目录
-* routes: 子组件
-* name: 菜单名
-* authority: 权限
-* icon: 图标
-*/
+ * 属性介绍
+ * path: 路由
+ * component: 组件所在的文件目录
+ * routes: 子组件
+ * name: 菜单名
+ * authority: 权限
+ * icon: 图标
+ */
 export default [
   {
     path: '/',
@@ -34,13 +34,7 @@ export default [
             routes: [
               {
                 path: '/',
-                redirect: '/demo',
-              },
-              {
-                path: '/demo',
-                name: 'demo',
-                icon: 'smile',
-                component: './Demo',
+                redirect: '/data/analysis',
               },
               {
                 path: '/data',
@@ -51,7 +45,17 @@ export default [
                     path: '/data/analysis',
                     name: 'analysis',
                     component: './DataPanel/Analysis',
-                  }
+                  },
+                  {
+                    path: '/data/analysis_mock',
+                    name: 'analysis_mock',
+                    component: './DataPanel/Analysis/index_mock',
+                  },
+                  {
+                    path: '/data/feedback',
+                    name: 'feedback',
+                    component: './DataPanel/Feedback',
+                  },
                 ],
               },
               {
@@ -69,13 +73,14 @@ export default [
                     path: '/basic/residential',
                     name: 'residential',
                     component: './BasicManagement/ResidentialManagement',
-                  }
-                ]
+                  },
+                ],
               },
               {
                 path: '/senior',
                 name: 'senior',
                 icon: 'crown',
+                authority: ['admin'],
                 component: './SeniorManagement/EmployeeManagement',
                 routes: [
                   {
@@ -83,7 +88,7 @@ export default [
                     name: 'employee',
                     component: './SeniorManagement/EmployeeManagement',
                   },
-                ]
+                ],
               },
               {
                 path: '/order',

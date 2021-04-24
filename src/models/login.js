@@ -4,7 +4,8 @@ import { fakeAccountLogin, userLogin } from '@/services/login';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 import { message } from 'antd';
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+import { getUserData } from '@/services/user';
 
 const Model = {
   namespace: 'login',
@@ -14,14 +15,21 @@ const Model = {
   effects: {
     *login({ payload }, { call, put }) {
       // const response = yield call(fakeAccountLogin, payload);
-      console.log(payload,'login model');
-      const response = yield call(userLogin, payload)
-      console.log(response,'login response');
-      if(response.code === 200){
+      console.log(payload, 'login model');
+      const response = yield call(userLogin, payload);
+      console.log(response, 'login response');
+      if (response.code === 200) {
         response.status = 'ok';
-        response.currentAuthority = 'admin';
-        response.type='account';
+        response.currentAuthority = 'user';
+        response.type = 'account';
       }
+
+      const userData = yield call(getUserData);
+      console.log(userData);
+      if (userData && userData.code === 200 && userData.data.user.super_state === 2) {
+        response.currentAuthority = 'admin';
+      }
+
       yield put({
         type: 'changeLoginStatus',
         payload: response,

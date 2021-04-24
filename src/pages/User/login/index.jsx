@@ -32,7 +32,6 @@ const Login = (props) => {
   const intl = useIntl();
 
   const handleSubmit = (values) => {
-    console.log(values);
     const { dispatch } = props;
     // model登录请求
     dispatch({
@@ -62,27 +61,8 @@ const Login = (props) => {
           return Promise.resolve();
         }}
       >
-        {/*<Tabs activeKey={type} onChange={setType}>*/}
-        {/*  <Tabs.TabPane*/}
-        {/*    key="account"*/}
-        {/*    tab={intl.formatMessage({*/}
-        {/*      id: 'pages.login.accountLogin.tab',*/}
-        {/*      defaultMessage: '账户密码登录',*/}
-        {/*    })}*/}
-        {/*  />*/}
-        {/*  <Tabs.TabPane*/}
-        {/*    key="mobile"*/}
-        {/*    tab={intl.formatMessage({*/}
-        {/*      id: 'pages.login.phoneLogin.tab',*/}
-        {/*      defaultMessage: '手机号登录',*/}
-        {/*    })}*/}
-        {/*  />*/}
-        {/*</Tabs>*/}
-
         {status === 'error' && loginType === 'account' && !submitting && (
-          <LoginMessage
-            content={'账户或密码错误（admin/ant.design)'}
-          />
+          <LoginMessage content={'账户或密码错误（admin/ant.design)'} />
         )}
         {type === 'account' && (
           <>

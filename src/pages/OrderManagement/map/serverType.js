@@ -9,6 +9,10 @@ export const serverType = [
   },
   {
     label: '木工',
+    value: '03',
+  },
+  {
+    label: '排污',
     value: '04',
   },
   {
@@ -23,11 +27,7 @@ export const serverType = [
     label: '邻里调解',
     value: '07',
   },
-  {
-    label: '其他',
-    value: '08',
-  },
-]
+];
 
 const serverSubType = [
   [
@@ -90,15 +90,15 @@ const serverSubType = [
   ],
   [
     {
-      label: '厕所堵塞',
+      label: '洗手盆下水管漏水',
       value: '04-01',
     },
     {
-      label: '洗手盆水管漏水',
+      label: '排水管漏水',
       value: '04-02',
     },
     {
-      label: '排水管漏水',
+      label: '厕所堵塞',
       value: '04-03',
     },
     {
@@ -172,16 +172,23 @@ const serverSubType = [
       value: '07-05',
     },
   ],
-  [
-    {
-      label: '其他',
-      value: '08-01',
-    }
-  ],
-]
+];
 
 export const getSubType = (index) => {
-  return serverSubType[--index]
-}
+  const tmp = index - 1;
+  return serverSubType[tmp];
+};
 
+export const getTypeString = (val) => {
+  const split = val.split('-');
+  const typeNum = parseInt(split[0], 10);
+  const subTypeNum = parseInt(split[1], 10);
+  const type = serverType[typeNum - 1].label;
+  const subType = serverSubType[typeNum - 1][subTypeNum - 1].label;
+  return `${type}-${subType}`;
+};
 
+export const getStageString = (val) => {
+  const stageMap = ['', '已发布', '已确认', '进行中', '暂停中', '已终止', '已完成', '已评价'];
+  return stageMap[parseInt(val, 10) - 1];
+};
